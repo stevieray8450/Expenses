@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TestAPI.Data.Models
 {
@@ -13,4 +12,4 @@ namespace TestAPI.Data.Models
         public int Account_TypeId { get; set; }
         public AccountTypes AccountType { get; set; }
     }
-}
+}   

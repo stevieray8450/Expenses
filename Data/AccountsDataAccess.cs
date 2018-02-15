@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using TestAPI.Data.Models;
 
 namespace TestAPI.Data
 {
-    public class AccountsDataAccess
+    public class AccountsDataAccess : BaseDa<Accounts>
     {
         private ExpensesDbContext _context;
 
@@ -13,9 +13,9 @@ namespace TestAPI.Data
             _context = context;
         }
 
-        public IEnumerable<Accounts> List()
+        public override IEnumerable<Accounts> List()
         {
-            return _context.Accounts;
+            return _context.Accounts.Include(account => account.AccountType);
         }
     }
 }

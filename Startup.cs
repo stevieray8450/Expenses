@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TestAPI.Data;
+using TestAPI.Data.Models;
 
 namespace TestAPI
 {
@@ -22,6 +23,7 @@ namespace TestAPI
             services.AddMvc();
             services.AddDbContext<ExpensesDbContext>(options =>
                                                     options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<IBaseDa<Accounts>, AccountsDataAccess>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

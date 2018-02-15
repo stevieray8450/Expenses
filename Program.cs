@@ -7,6 +7,13 @@ namespace TestAPI
     {
         public static void Main(string[] args)
         {
+            //var builder = new ContainerBuilder();
+
+            //// register types here for DI
+            //builder.RegisterType<AccountsDataAccess>().As<IBaseDa<Accounts>>();
+
+            //_container = builder.Build();
+
             BuildWebHost(args).Run();
         }
 
