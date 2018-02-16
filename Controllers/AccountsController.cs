@@ -8,12 +8,10 @@ namespace TestAPI.Controllers
     [Route("[controller]")]
     public class AccountsController : Controller
     {
-        private ExpensesDbContext _context;
         private IBaseDa<Accounts> _accountsDa;
 
-        public AccountsController(ExpensesDbContext context, IBaseDa<Accounts> accountsDa)
+        public AccountsController(IBaseDa<Accounts> accountsDa)
         {
-            _context = context;
             _accountsDa = accountsDa;
         }
 

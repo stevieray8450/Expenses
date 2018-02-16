@@ -20,10 +20,14 @@ namespace TestAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddMvc();
+
             services.AddDbContext<ExpensesDbContext>(options =>
                                                     options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IBaseDa<Accounts>, AccountsDataAccess>();
+            services.AddTransient<IExpensesDa, ExpensesDa>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,6 +37,12 @@ namespace TestAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials());
 
             app.UseMvc();
         }
